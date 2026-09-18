@@ -47,11 +47,11 @@ app.post("/v1/chat/completions", async (req, res) => {
 
     // Pega a resposta da NVIDIA
     const response = await axios.post(
-      process.env.NVIDIA_API_URL,
+      process.env.API_URL,
       payload,
       {
         headers: {
-          "Authorization": `Bearer ${process.env.NVIDIA_API_KEY}`,
+          "Authorization": `Bearer ${process.env.API_KEY}`,
           "Content-Type": "application/json"
         }
       }
