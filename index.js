@@ -31,6 +31,7 @@ app.post("/v1/chat/completions", async (req, res) => {
       return res.status(400).json({ error: "messages precisa ser um array" });
     }
 
+    //cortei de 50 pra 25
     const lastMessages = messages.slice(-25);
     const oldMessages = messages.slice(0, -25);
     const summary = await summarizeMessages(oldMessages);
@@ -39,7 +40,7 @@ app.post("/v1/chat/completions", async (req, res) => {
     const charPersonality = messages.find(m => m.role === 'system')?.content || "";
     
     const payload = {
-      model:"deepseek/deepseek-r1-0528",
+      model:"minimax/minimax-m2",
       messages: [
         { role: "system", content: charPersonality }, // A personalidade SEMPRE inteira aqui
         { role: "system", content: `Resumo do histórico: ${summary}` },
