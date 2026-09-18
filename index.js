@@ -52,6 +52,7 @@ app.post("/v1/chatbots/37768/messages", async (req, res) => {
       {
         headers: {
           "Authorization": `Bearer ${process.env.API_KEY}`,
+          'X-Anakin-Api-Version': '2024-05-06',
           "Content-Type": "application/json"
         }
       }
