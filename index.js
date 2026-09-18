@@ -46,7 +46,7 @@ app.post("/v1/chat/completions", async (req, res) => {
         { role: "system", content: `Resumo do histórico: ${summary}` },
         ...lastMessages
       ],
-      max_tokens: 16384, 
+      max_tokens: 8000, 
       temperature: 0.6,
       top_p: 0.95
     };
