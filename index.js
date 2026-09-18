@@ -18,7 +18,7 @@ async function summarizeMessages(oldMessages) {
   return text.length > 2000 ? text.slice(-2000) + "..." : text;
 }
 
-app.post("/v1/chat/completions", async (req, res) => {
+app.post("/v1/chatbots/37768/messages", async (req, res) => {
   try {
     const { messages } = req.body;
 
@@ -47,11 +47,11 @@ app.post("/v1/chat/completions", async (req, res) => {
 
     // Pega a resposta da NVIDIA
     const response = await axios.post(
-      process.env.NVIDIA_API_URL,
+      process.env.API_URL,
       payload,
       {
         headers: {
-          "Authorization": `Bearer ${process.env.NVIDIA_API_KEY}`,
+          "Authorization": `Bearer ${process.env.API_KEY}`,
           "Content-Type": "application/json"
         }
       }
