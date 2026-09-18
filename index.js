@@ -18,6 +18,11 @@ async function summarizeMessages(oldMessages) {
   return text.length > 2000 ? text.slice(-2000) + "..." : text;
 }
 
+function estimateTokens(payload) {
+  const text = typeof payload === "string" ? payload : JSON.stringify(payload);
+  return Math.ceil(text.length / 4);
+}
+
 app.post("/v1/chat/completions", async (req, res) => {
   try {
     const { messages } = req.body;
@@ -45,7 +50,8 @@ app.post("/v1/chat/completions", async (req, res) => {
       top_p: 0.95
     };
 
-    console.log(payload);
+    const tokensEstimados = estimateTokens(payload);
+    console.log(`Tokens estimados no payload enviado: ${tokensEstimados}`);
 
     // Pega a resposta da NVIDIA
     const response = await axios.post(
