@@ -45,6 +45,8 @@ app.post("/v1/chat/completions", async (req, res) => {
       top_p: 0.95
     };
 
+    console.log(payload);
+
     // Pega a resposta da NVIDIA
     const response = await axios.post(
       process.env.API_URL,
