@@ -31,8 +31,8 @@ app.post("/v1/chat/completions", async (req, res) => {
       return res.status(400).json({ error: "messages precisa ser um array" });
     }
 
-    const lastMessages = messages.slice(-50);
-    const oldMessages = messages.slice(0, -50);
+    const lastMessages = messages.slice(-25);
+    const oldMessages = messages.slice(0, -25);
     const summary = await summarizeMessages(oldMessages);
 
     // Separe a definição do personagem (que não deve ser resumida)
