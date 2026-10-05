@@ -40,7 +40,7 @@ app.post("/v1/chat/completions", async (req, res) => {
     const charPersonality = messages.find(m => m.role === 'system')?.content || "";
     
     const payload = {
-      model:"deepseek/deepseek-r1-0528",
+      model:"nvidia/nemotron-3-super-120b-a12b",
       messages: [
         { role: "system", content: charPersonality }, // A personalidade SEMPRE inteira aqui
         { role: "system", content: `Resumo do histórico: ${summary}` },
